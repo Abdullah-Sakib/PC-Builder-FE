@@ -25,13 +25,13 @@ const FeaturedCategories = () => {
       id: "104",
       category: "Power Supply Unit",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ACZibLrMtNmJ-jRJIJr_v6lCbt15ZdB8lQ&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZX_leOaalFd_hUtTPaumWAZKGYPu4KvrvOQ&usqp=CAU",
     },
     {
       id: "105",
       category: "Storage Device",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZX_leOaalFd_hUtTPaumWAZKGYPu4KvrvOQ&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2KWQW1GBhX9lmayEO0UyIU_Yo83vyo6fmcw&usqp=CAU",
     },
     {
       id: "106",

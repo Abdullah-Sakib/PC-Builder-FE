@@ -143,6 +143,11 @@ const ProductDetailsPage = () => {
                   </span>
                 </span>
               </div>
+              <div className="mb-2">
+                {Object.keys(product?.keyFeatures)?.map((key) => (
+                  <li key={key}>{`${key} : ${product?.keyFeatures[key]}`}</li>
+                ))}
+              </div>
               <p className="leading-relaxed">{product?.description}</p>
 
               <div className="flex pt-3 mt-3 border-t-2 border-gray-100">
@@ -166,8 +171,8 @@ const ProductDetailsPage = () => {
             </div>
           </div>
           {/* Reviews area  */}
-          <div className="my-5">
-            <h1 className="text-3xl mb-3 font-semibold">Reviews</h1>
+          <div className="mt-10">
+            <h1 className="text-3xl mb-5 font-semibold">Reviews</h1>
             {product?.reviews?.map((review) => (
               <div key={review?.id}>
                 <a className="inline-flex items-center my-2">

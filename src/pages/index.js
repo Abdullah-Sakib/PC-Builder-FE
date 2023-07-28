@@ -3,7 +3,6 @@ import FeaturedCategories from "@/components/FeaturedCategories";
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
 import Link from "next/link";
-import { AiFillStar } from "react-icons/ai";
 
 export default function Home() {
   const featuredProducts = [
@@ -15,7 +14,7 @@ export default function Home() {
       category: "CPU / Processor",
       price: 199.99,
       status: "In Stock",
-      rating: 4.5,
+      rating: 5,
       description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
       keyFeatures: {
@@ -185,7 +184,7 @@ export default function Home() {
           <Link
             key={product?.id}
             href={`/product/${product?.id}`}
-            className="mx-auto"
+            className="mx-auto hover:shadow-lg duration-300 rounded-xl"
           >
             <div className="card w-72 md:w-72 glass">
               <figure>
@@ -193,13 +192,47 @@ export default function Home() {
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{product?.productName}</h2>
-                <p className="flex">
-                  <span className="font-semibold mr-1">Ratting: </span>{" "}
-                  <span className="flex items-center mr-1">
-                    {product?.rating}{" "}
-                    <AiFillStar className="ml-1 text-orange-500" />
-                  </span>
-                </p>
+                <div className="flex">
+                  <span className="font-semibold mr-1">
+                    Ratting: {product?.rating}
+                  </span>{" "}
+                  <div className="flex">
+                    <span className="flex items-center">
+                      {new Array(Math.floor(product?.rating))
+                        .fill(null)
+                        .map((star, i) => (
+                          <svg
+                            key={i}
+                            fill="currentColor"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            className="w-4 h-4 text-green-500"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                          </svg>
+                        ))}
+                      {new Array(5 - Math.floor(product?.rating))
+                        .fill(null)
+                        .map((star, i) => (
+                          <svg
+                            key={i}
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            class="w-4 h-4 text-green-500"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                          </svg>
+                        ))}
+                    </span>
+                  </div>
+                </div>
                 <p>
                   <span className="font-semibold">Category:</span>{" "}
                   {product?.category}
