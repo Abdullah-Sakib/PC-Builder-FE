@@ -1,4 +1,4 @@
-import { useSession,  signOut } from "next-auth/react"
+import {  signOut } from "next-auth/react"
 import Link from "next/link";
 import React from "react";
 
@@ -101,6 +101,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+      <button onClick={() => signOut()} className="btn btn-error text-white mr-2">Log out</button>
         <Link href="/pc-builder">
           <button className="btn btn-accent text-white">PC Builder</button>
         </Link>
