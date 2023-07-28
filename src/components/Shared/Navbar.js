@@ -104,21 +104,22 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {session?.user?.name ? (
-          <button
-            onClick={() => signOut()}
-            className="btn btn-error text-white mr-2"
-          >
-            Log out
-          </button>
+          <>
+            <button
+              onClick={() => signOut()}
+              className="btn btn-error text-white mr-2"
+            >
+              Log out
+            </button>
+            <Link href="/pc-builder">
+              <button className="btn btn-accent text-white">PC Builder</button>
+            </Link>
+          </>
         ) : (
           <Link href="/login">
             <button className="btn btn-accent text-white mr-2">Login</button>
           </Link>
         )}
-
-        <Link href="/pc-builder">
-          <button className="btn btn-accent text-white">PC Builder</button>
-        </Link>
       </div>
     </div>
   );

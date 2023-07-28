@@ -5,6 +5,7 @@ import { CgSmartphoneRam } from "react-icons/cg";
 import { ImPower } from "react-icons/im";
 import { MdStorage } from "react-icons/md";
 import { FiMonitor } from "react-icons/fi";
+import Link from "next/link";
 
 const PCBuilder = () => {
   const categories = [
@@ -45,23 +46,23 @@ const PCBuilder = () => {
       <div className="min-h-screen text-black">
         <div className="w-3/4 mx-auto">
           {categories?.map((category) => (
-            <div key={category?.id} className="p-4   w-full">
-              <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
-                <div className="w-16 h-16 sm:mr-4 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-                  {
-                    category?.icon
-                  }
-                </div>
-                <div className="flex-grow items-center flex">
-                  <h2 className="text-gray-900 text-lg title-font font-medium  ">
-                    {category?.category}
-                  </h2>
-                </div>
-                <div className="flex items-center">
-                  <button className="btn btn-primary">Choose</button>
+            <Link href={`/components/${category?.category}`} key={category?.id}>
+              <div className="p-4 w-full">
+                <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
+                  <div className="w-16 h-16 sm:mr-4 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
+                    {category?.icon}
+                  </div>
+                  <div className="flex-grow items-center flex">
+                    <h2 className="text-gray-900 text-lg title-font font-medium  ">
+                      {category?.category}
+                    </h2>
+                  </div>
+                  <div className="flex items-center">
+                    <button className="btn btn-primary">Choose</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
