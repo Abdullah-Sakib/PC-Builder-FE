@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import FeaturedCategories from "@/components/FeaturedCategories";
-import RootLayout from "@/components/layouts/RootLayout";
-import { useSession } from "next-auth/react";
+import Footer from "@/components/Shared/Footer";
+import Navbar from "@/components/Shared/Navbar";
 import Link from "next/link";
 import { AiFillStar } from "react-icons/ai";
 
@@ -176,18 +176,18 @@ export default function Home() {
       ],
     },
   ];
-  const { data: session } = useSession()
-  console.log(session)
+
   return (
     <>
-      <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
+      <Navbar />
+      <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 text-black">
         {featuredProducts?.map((product) => (
           <Link
             key={product?.id}
             href={`/product/${product?.id}`}
             className="mx-auto"
           >
-            <div className="card w-72 md:w-96 glass">
+            <div className="card w-72 md:w-72 glass">
               <figure>
                 <img src={product?.image} alt="product" />
               </figure>
@@ -218,10 +218,7 @@ export default function Home() {
         ))}
       </div>
       <FeaturedCategories />
+      <Footer />
     </>
   );
 }
-
-Home.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
-};

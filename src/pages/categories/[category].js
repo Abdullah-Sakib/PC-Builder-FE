@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import RootLayout from "@/components/layouts/RootLayout";
+import Footer from "@/components/Shared/Footer";
+import Navbar from "@/components/Shared/Navbar";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -180,50 +181,54 @@ const CategoriesPage = () => {
     },
   ];
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
-        {featuredProducts?.map((product) => (
-          <Link
-            key={product?.id}
-            href={`/product/${product?.id}`}
-            className="mx-auto"
-          >
-            <div className="card w-72 md:w-96 glass">
-              <figure>
-                <img src={product?.image} alt="product" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{product?.productName}</h2>
-                <p className="flex">
-                  <span className="font-semibold mr-1">Ratting: </span>{" "}
-                  <span className="flex items-center mr-1">
-                    {product?.rating}{" "}
-                    <AiFillStar className="ml-1 text-orange-500" />
-                  </span>
-                </p>
-                <p>
-                  <span className="font-semibold">Category:</span>{" "}
-                  {product?.category}
-                </p>
-                <p>
-                  <span className="font-semibold">Price:</span> $
-                  {product?.price}
-                </p>
-                <p>
-                  <span className="font-semibold">Status:</span>{" "}
-                  {product?.status}
-                </p>
+    <>
+      <Navbar />
+      <div className="min-h-screen">
+        <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
+          {featuredProducts?.map((product) => (
+            <Link
+              key={product?.id}
+              href={`/product/${product?.id}`}
+              className="mx-auto"
+            >
+              <div className="card w-72 md:w-96 glass">
+                <figure>
+                  <img src={product?.image} alt="product" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{product?.productName}</h2>
+                  <p className="flex">
+                    <span className="font-semibold mr-1">Ratting: </span>{" "}
+                    <span className="flex items-center mr-1">
+                      {product?.rating}{" "}
+                      <AiFillStar className="ml-1 text-orange-500" />
+                    </span>
+                  </p>
+                  <p>
+                    <span className="font-semibold">Category:</span>{" "}
+                    {product?.category}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Price:</span> $
+                    {product?.price}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Status:</span>{" "}
+                    {product?.status}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
 export default CategoriesPage;
 
-CategoriesPage.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
-};
+// CategoriesPage.getLayout = function getLayout(page) {
+//   return <RootLayout>{page}</RootLayout>;
+// };

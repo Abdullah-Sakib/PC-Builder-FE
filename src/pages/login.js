@@ -1,3 +1,5 @@
+import Footer from "@/components/Shared/Footer";
+import Navbar from "@/components/Shared/Navbar";
 import RootLayout from "@/components/layouts/RootLayout";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -7,6 +9,8 @@ const Login = () => {
   const router = useRouter();
   const { callbackUrl } = router;
   return (
+    <>
+    <Navbar/>
     <div className="flex justify-center items-center h-96 mb-4">
       <div>
         <h1 className="text-black text-center text-lg mb-6 font-semibold">
@@ -32,11 +36,11 @@ const Login = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
 export default Login;
 
-Login.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
-};
+ 
