@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
 
 const FeaturedCategories = () => {
   const featuredCategories = [
     {
       id: "101",
-      category: "CPU / Processor",
+      category: "CPU - Processor",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ACZibLrMtNmJ-jRJIJr_v6lCbt15ZdB8lQ&usqp=CAU",
     },
@@ -18,8 +19,7 @@ const FeaturedCategories = () => {
     {
       id: "103",
       category: "RAM",
-      image:
-        "https://irnpost.com/wp-content/uploads/2022/04/0x0.jpg",
+      image: "https://irnpost.com/wp-content/uploads/2022/04/0x0.jpg",
     },
     {
       id: "104",
@@ -45,18 +45,24 @@ const FeaturedCategories = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
           {featuredCategories?.map((item) => (
-            <div key={item?.id} className="p-4 w-1/2 md:w-1/5 lg:w-1/6 sm:mb-0 mb-6 hover:bg-gray-100 duration-300 rounded-lg cursor-pointer">
-              <div className="rounded-lg h-28 overflow-hidden">
-                <img
-                  alt="content"
-                  className="object-cover object-center h-full w-full"
-                  src={item?.image}
-                />
+            <Link
+              href={`/categories/${item?.category}`}
+              key={item?.id}
+              className="p-4 w-1/2 md:w-1/5 lg:w-1/6 sm:mb-0 mb-6 hover:bg-gray-100 duration-300 rounded-lg cursor-pointer"
+            >
+              <div>
+                <div className="rounded-lg h-28 overflow-hidden">
+                  <img
+                    alt="content"
+                    className="object-cover object-center h-full w-full"
+                    src={item?.image}
+                  />
+                </div>
+                <h2 className="text-xl font-medium title-font text-center text-gray-900 mt-5">
+                  {item?.category}
+                </h2>
               </div>
-              <h2 className="text-xl font-medium title-font text-center text-gray-900 mt-5">
-                {item?.category}
-              </h2>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

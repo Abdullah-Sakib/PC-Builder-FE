@@ -29,24 +29,28 @@ const Navbar = () => {
             <li>{/* <a>Item 1</a> */}</li>
             <li>
               <a>Categories</a>
-              <ul className="p-2 w-48">
+              <ul className="p-2 w-48 z-50">
                 <li>
-                  <a>CPU / Processor</a>
+                  <Link href="/categories/CPU - Processor">
+                    CPU - Processor
+                  </Link>
                 </li>
                 <li>
-                  <a>Motherboard</a>
+                  <Link href="/categories/Motherboard">Motherboard</Link>
                 </li>
                 <li>
-                  <a>RAM</a>
+                  <Link href="/categories/RAM">RAM</Link>
                 </li>
                 <li>
-                  <a>Power Supply Unit</a>
+                  <Link href="/categories/Power Supply Unit">
+                    Power Supply Unit
+                  </Link>
                 </li>
                 <li>
-                  <a>Storage Device</a>
+                  <Link href="/categories/Storage Device">Storage Device</Link>
                 </li>
                 <li>
-                  <a>Monitor</a>
+                  <Link href="/categories/Monitor">Monitor</Link>
                 </li>
               </ul>
             </li>
@@ -67,22 +71,26 @@ const Navbar = () => {
               <summary>Categories</summary>
               <ul className="p-2 w-48 z-50">
                 <li>
-                  <a>CPU / Processor</a>
+                  <Link href="/categories/CPU - Processor">
+                    CPU - Processor
+                  </Link>
                 </li>
                 <li>
-                  <a>Motherboard</a>
+                  <Link href="/categories/Motherboard">Motherboard</Link>
                 </li>
                 <li>
-                  <a>RAM</a>
+                  <Link href="/categories/RAM">RAM</Link>
                 </li>
                 <li>
-                  <a>Power Supply Unit</a>
+                  <Link href="/categories/Power Supply Unit">
+                    Power Supply Unit
+                  </Link>
                 </li>
                 <li>
-                  <a>Storage Device</a>
+                  <Link href="/categories/Storage Device">Storage Device</Link>
                 </li>
                 <li>
-                  <a>Monitor</a>
+                  <Link href="/categories/Monitor">Monitor</Link>
                 </li>
               </ul>
             </details>
@@ -92,7 +100,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <Link href="/pc-builder">
-          <button className="btn btn-accent">PC Builder</button>
+          <button className="btn btn-accent text-white">PC Builder</button>
         </Link>
       </div>
     </div>

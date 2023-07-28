@@ -1,10 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import FeaturedCategories from "@/components/FeaturedCategories";
 import RootLayout from "@/components/layouts/RootLayout";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 import { AiFillStar } from "react-icons/ai";
 
-export default function Home() {
+const CategoriesPage = () => {
+  const router = useRouter();
+  console.log(router?.query?.category);
+
   const featuredProducts = [
     {
       id: 1,
@@ -175,9 +179,8 @@ export default function Home() {
       ],
     },
   ];
-
   return (
-    <>
+    <div className="min-h-screen">
       <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
         {featuredProducts?.map((product) => (
           <Link
@@ -215,11 +218,12 @@ export default function Home() {
           </Link>
         ))}
       </div>
-      <FeaturedCategories />
-    </>
+    </div>
   );
-}
+};
 
-Home.getLayout = function getLayout(page) {
+export default CategoriesPage;
+
+CategoriesPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
