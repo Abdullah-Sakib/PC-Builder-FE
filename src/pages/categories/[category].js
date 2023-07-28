@@ -184,14 +184,14 @@ const CategoriesPage = () => {
     <>
       <Navbar />
       <div className="min-h-screen">
-        <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
+        <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 text-black">
           {featuredProducts?.map((product) => (
             <Link
               key={product?.id}
               href={`/product/${product?.id}`}
               className="mx-auto"
             >
-              <div className="card w-72 md:w-96 glass">
+              <div className="card w-72 md:w-72 glass">
                 <figure>
                   <img src={product?.image} alt="product" />
                 </figure>

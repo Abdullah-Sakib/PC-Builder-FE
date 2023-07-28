@@ -1,6 +1,5 @@
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
-import RootLayout from "@/components/layouts/RootLayout";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { BsGoogle, BsGithub } from "react-icons/bs";
