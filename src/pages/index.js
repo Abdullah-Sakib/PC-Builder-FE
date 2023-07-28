@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import FeaturedCategories from "@/components/FeaturedCategories";
 import RootLayout from "@/components/layouts/RootLayout";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { AiFillStar } from "react-icons/ai";
 
@@ -175,7 +176,8 @@ export default function Home() {
       ],
     },
   ];
-
+  const { data: session } = useSession()
+  console.log(session)
   return (
     <>
       <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">

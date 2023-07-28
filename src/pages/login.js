@@ -1,7 +1,11 @@
 import RootLayout from "@/components/layouts/RootLayout";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Login = () => {
+  const router = useRouter();
+  const { callbackUrl } = router;
   return (
     <div className="flex justify-center items-center h-96 mb-4">
       <div>
@@ -9,8 +13,22 @@ const Login = () => {
           Login with <br /> Google or Github
         </h1>
         <div className="text-black flex bg-gray-200 p-4 w-52 justify-between rounded">
-          <BsGoogle className="text-3xl cursor-pointer" />
-          <BsGithub className="text-3xl cursor-pointer" />
+          <BsGoogle
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: callbackUrl || "http://localhost:3000",
+              })
+            }
+            className="text-3xl cursor-pointer"
+          />
+          <BsGithub
+            onClick={() =>
+              signIn("github", {
+                callbackUrl: callbackUrl || "http://localhost:3000",
+              })
+            }
+            className="text-3xl cursor-pointer"
+          />
         </div>
       </div>
     </div>

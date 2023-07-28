@@ -1,7 +1,9 @@
+import { useSession,  signOut } from "next-auth/react"
 import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
+
   return (
     <div className="navbar bg-base-200 text-black">
       <div className="navbar-start">
