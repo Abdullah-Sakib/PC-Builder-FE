@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import FeaturedCategories from "@/components/FeaturedCategories";
 import RootLayout from "@/components/layouts/RootLayout";
 import Link from "next/link";
 import { AiFillStar } from "react-icons/ai";
@@ -66,41 +67,44 @@ export default function Home() {
       rating: 4.2,
     },
   ];
+
   return (
-    <div className="container mx-auto bg-white py-20 grid grid-cols-3 gap-5 text-black">
-      {featuredProducts?.map((product) => (
-        <Link key={product?.id} href={`/product/${product?.id}`}>
-          <div className="card w-96 glass">
-            <figure>
-              <img
-                src={product?.image}
-                alt="car!"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{product?.productName}</h2>
-              <p className="flex">
-                <span className="font-semibold mr-1">Ratting: </span>{" "}
-                <span className="flex items-center mr-1">
-                  {product?.rating}{" "}
-                  <AiFillStar className="ml-1 text-orange-500" />
-                </span>
-              </p>
-              <p>
-                <span className="font-semibold">Category:</span>{" "}
-                {product?.category}
-              </p>
-              <p>
-                <span className="font-semibold">Price:</span> ${product?.price}
-              </p>
-              <p>
-                <span className="font-semibold">Status:</span> {product?.status}
-              </p>
+    <>
+      <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
+        {featuredProducts?.map((product) => (
+          <Link key={product?.id} href={`/product/${product?.id}`} className="mx-auto">
+            <div className="card w-72 md:w-96 glass">
+              <figure>
+                <img src={product?.image} alt="product" />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{product?.productName}</h2>
+                <p className="flex">
+                  <span className="font-semibold mr-1">Ratting: </span>{" "}
+                  <span className="flex items-center mr-1">
+                    {product?.rating}{" "}
+                    <AiFillStar className="ml-1 text-orange-500" />
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold">Category:</span>{" "}
+                  {product?.category}
+                </p>
+                <p>
+                  <span className="font-semibold">Price:</span> $
+                  {product?.price}
+                </p>
+                <p>
+                  <span className="font-semibold">Status:</span>{" "}
+                  {product?.status}
+                </p>
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
-    </div>
+          </Link>
+        ))}
+      </div>
+      <FeaturedCategories />
+    </>
   );
 }
 
