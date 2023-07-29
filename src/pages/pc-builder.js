@@ -48,13 +48,13 @@ const PCBuilder = ({ categories }) => {
                   key === category?.category && (
                     <div
                       key={i}
-                      className="w-[97%] mx-auto mb-4 pt-0   bg-gray-200 rounded-lg"
+                      className="w-[90%] sm:w-[95%] lg:w-[97%] mx-auto mb-4 pt-0 bg-gray-200 rounded-lg"
                     >
                       <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
-                        <div className="w-36 h-36 sm:mr-4 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-500 flex-shrink-0">
+                        <div className="w-full sm:w-36 h-36 sm:mr-4 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-500 flex-shrink-0">
                           <Image
                             src={pc[key]?.image}
-                            className="w-full h-full rounded-lg"
+                            className=" w-full h-full rounded-lg"
                             width={300}
                             height={300}
                             alt=""
