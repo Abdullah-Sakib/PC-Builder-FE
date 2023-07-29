@@ -3,10 +3,13 @@ import Navbar from "@/components/Shared/Navbar";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import { toast } from "react-hot-toast";
 
 const PCBuilder = ({ categories }) => {
   const { pc } = useSelector((state) => state?.pcBuilder);
-
+  const buildPc = () => {
+    toast.success('Congratulations! You have successfully build your PC');
+  };
   return (
     <div>
       <Navbar />
@@ -121,6 +124,7 @@ const PCBuilder = ({ categories }) => {
           <div className="flex justify-center my-5">
             <button
               className="btn btn-primary text-white "
+              onClick={() => buildPc()}
               disabled={Object.keys(pc)?.length < 6}
             >
               Complete Build

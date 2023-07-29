@@ -3,6 +3,7 @@ import FeaturedCategories from "@/components/FeaturedCategories";
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 export default function Home({ products, categories }) {
   let filteredProducts = [];
@@ -98,7 +99,7 @@ export default function Home({ products, categories }) {
           </Link>
         ))}
       </div>
-      <FeaturedCategories categories={categories}/>
+      <FeaturedCategories categories={categories} />
       <Footer />
     </>
   );
@@ -113,10 +114,8 @@ export const getStaticProps = async function () {
   return {
     props: {
       products: data,
-      categories: categories
+      categories: categories,
     },
     revalidate: 30,
   };
 };
-
-
