@@ -28,9 +28,8 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>{/* <a>Item 1</a> */}</li>
             <li>
               <a>Categories</a>
               <ul className="p-2 w-48 z-50">
@@ -58,7 +57,16 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-            <li>{/* <a>Item 3</a> */}</li>
+            {session?.user?.name && (
+              <li>
+                <a
+                  onClick={() => signOut()}
+                  className=" bg-red-400 text-white  w-[92%]"
+                >
+                  log out
+                </a>
+              </li>
+            )}
           </ul>
         </div>
         <Link href="/">
@@ -107,7 +115,7 @@ const Navbar = () => {
           <>
             <button
               onClick={() => signOut()}
-              className="btn btn-error text-white mr-2"
+              className="btn btn-error text-white mr-2 hidden lg:block"
             >
               Log out
             </button>

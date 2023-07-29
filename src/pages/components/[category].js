@@ -8,183 +8,13 @@ import { useDispatch } from "react-redux";
 
 const ComponentsPage = ({ products }) => {
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleAddToBuilder = (product) => {
     dispatch(addComponent(product));
     router.push("/pc-builder");
   };
 
-  const featuredProducts = [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-      productName: "Product 1",
-      category: "CPU - Processor",
-      price: 199.99,
-      status: "In Stock",
-      rating: 4.5,
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-      keyFeatures: {
-        Brand: "Brand X",
-        Model: "Model XYZ",
-        Specification: "Spec ABC",
-        Port: "Port Type",
-        Type: "Type 123",
-        Voltage: "110V",
-      },
-      reviews: [
-        {
-          id: 1,
-          username: "user123",
-          rating: 5,
-          comment: "Great product!",
-        },
-      ],
-    },
-    {
-      id: 2,
-      image:
-        "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-      productName: "Product 2",
-      category: "Motherboard",
-      price: 149.99,
-      status: "In Stock",
-      rating: 4.2,
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-      keyFeatures: {
-        Brand: "Brand X",
-        Model: "Model XYZ",
-        Specification: "Spec ABC",
-        Port: "Port Type",
-        Type: "Type 123",
-        Voltage: "110V",
-      },
-      reviews: [
-        {
-          id: 1,
-          username: "user123",
-          rating: 5,
-          comment: "Great product!",
-        },
-      ],
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-      productName: "Product 1",
-      category: "CPU / Processor",
-      price: 199.99,
-      status: "In Stock",
-      rating: 4.5,
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-      keyFeatures: {
-        Brand: "Brand X",
-        Model: "Model XYZ",
-        Specification: "Spec ABC",
-        Port: "Port Type",
-        Type: "Type 123",
-        Voltage: "110V",
-      },
-      reviews: [
-        {
-          id: 1,
-          username: "user123",
-          rating: 5,
-          comment: "Great product!",
-        },
-      ],
-    },
-    {
-      id: 4,
-      image:
-        "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-      productName: "Product 2",
-      category: "Motherboard",
-      price: 149.99,
-      status: "In Stock",
-      rating: 4.2,
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-      keyFeatures: {
-        Brand: "Brand X",
-        Model: "Model XYZ",
-        Specification: "Spec ABC",
-        Port: "Port Type",
-        Type: "Type 123",
-        Voltage: "110V",
-      },
-      reviews: [
-        {
-          id: 1,
-          username: "user123",
-          rating: 5,
-          comment: "Great product!",
-        },
-      ],
-    },
-    {
-      id: 5,
-      image:
-        "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-      productName: "Product 1",
-      category: "CPU / Processor",
-      price: 199.99,
-      status: "In Stock",
-      rating: 4.5,
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-      keyFeatures: {
-        Brand: "Brand X",
-        Model: "Model XYZ",
-        Specification: "Spec ABC",
-        Port: "Port Type",
-        Type: "Type 123",
-        Voltage: "110V",
-      },
-      reviews: [
-        {
-          id: 1,
-          username: "user123",
-          rating: 5,
-          comment: "Great product!",
-        },
-      ],
-    },
-    {
-      id: 6,
-      image:
-        "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-      productName: "Product 2",
-      category: "Motherboard",
-      price: 149.99,
-      status: "In Stock",
-      rating: 4.2,
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-      keyFeatures: {
-        Brand: "Brand X",
-        Model: "Model XYZ",
-        Specification: "Spec ABC",
-        Port: "Port Type",
-        Type: "Type 123",
-        Voltage: "110V",
-      },
-      reviews: [
-        {
-          id: 1,
-          username: "user123",
-          rating: 5,
-          comment: "Great product!",
-        },
-      ],
-    },
-  ];
   return (
     <div>
       <Navbar />
@@ -271,18 +101,7 @@ const ComponentsPage = ({ products }) => {
 
 export default ComponentsPage;
 
-export const getStaticPaths = async function () {
-  const res = await fetch("http://localhost:5000/products");
-  const products = await res.json();
-
-  const paths = products?.products?.map((product) => ({
-    params: { category: product.category },
-  }));
-
-  return { paths, fallback: false };
-};
-
-export const getStaticProps = async function (context) {
+export const getServerSideProps = async function (context) {
   const { params } = context;
   const res = await fetch(
     `http://localhost:5000/category-products/${params?.category}`
@@ -292,6 +111,5 @@ export const getStaticProps = async function (context) {
     props: {
       products: data,
     },
-    revalidate: 30,
   };
 };

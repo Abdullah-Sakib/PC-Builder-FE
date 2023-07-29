@@ -46,7 +46,10 @@ const PCBuilder = ({ categories }) => {
               {Object.keys(pc)?.map(
                 (key, i) =>
                   key === category?.category && (
-                    <div key={i} className="px-4 pb-4 pt-0 w-full">
+                    <div
+                      key={i}
+                      className="w-[97%] mx-auto mb-4 pt-0   bg-gray-200 rounded-lg"
+                    >
                       <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
                         <div className="w-36 h-36 sm:mr-4 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-500 flex-shrink-0">
                           <Image
@@ -132,13 +135,12 @@ const PCBuilder = ({ categories }) => {
 
 export default PCBuilder;
 
-export const getStaticProps = async function () {
+export const getServerSideProps = async function () {
   const categoriesRes = await fetch("http://localhost:5000/categories");
   const categories = await categoriesRes.json();
   return {
     props: {
       categories: categories,
     },
-    revalidate: 30,
   };
 };

@@ -6,7 +6,7 @@ import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const router = useRouter();
-  const { callbackUrl } = router;
+  const { callbackUrl } = router.query;
   return (
     <>
     <Navbar/>
