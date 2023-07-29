@@ -150,6 +150,11 @@ const PCBuilder = () => {
               )}
             </div>
           ))}
+          <div className="flex justify-center my-5">
+            <button className="btn btn-primary text-white " disabled={true}>
+              Complete Build
+            </button>
+          </div>
         </div>
       </div>
       <Footer />

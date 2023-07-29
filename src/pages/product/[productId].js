@@ -1,50 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
-import RootLayout from "@/components/layouts/RootLayout";
-import { useRouter } from "next/router";
 import React from "react";
 
-const ProductDetailsPage = () => {
-  const product = {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvZ3dhcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-    productName: "Product 1",
-    category: "CPU / Processor",
-    price: 199.99,
-    status: "In Stock",
-    individualRating: 4.7,
-    averageRating: 4.5,
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, dolore dignissimos. Reprehenderit odit rem quidem perferendis, ea consequatur consectetur modi eveniet, repudiandae commodi sint eaque molestiae quod voluptatibus eos fugiat sit maxime veniam fugit officia perspiciatis cupiditate itaque illo facere! Optio distinctio ea enim quasi eius iure, aliquam blanditiis saepe.",
-    keyFeatures: {
-      Brand: "Brand X",
-      Model: "Model XYZ",
-      Specification: "Spec ABC",
-      Port: "Port Type",
-      Type: "Type 123",
-      Voltage: "110V",
-    },
-    reviews: [
-      {
-        id: 1,
-        username: "user123",
-        comment: "Great product!",
-      },
-      {
-        id: 2,
-        username: "user123",
-        comment: "Nice product!",
-      },
-      {
-        id: 3,
-        username: "user123",
-        comment: "Awesome product!",
-      },
-    ],
-  };
-
+const ProductDetailsPage = ({product}) => {
+  
   return (
     <>
       <Navbar />
@@ -54,18 +14,18 @@ const ProductDetailsPage = () => {
             <img
               alt="ecommerce"
               className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src={product?.image}
+              src={product[0]?.image}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                {product?.category}
+                {product[0]?.category}
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {product?.productName}
+                {product[0]?.productName}
               </h1>
               <div className="flex mb-1">
                 <span className="flex items-center">
-                  {new Array(Math.floor(product?.averageRating))
+                  {new Array(Math.floor(product[0]?.averageRating))
                     .fill(null)
                     .map((star, i) => (
                       <svg
@@ -81,17 +41,17 @@ const ProductDetailsPage = () => {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
-                  {new Array(5 - Math.floor(product?.averageRating))
+                  {new Array(5 - Math.floor(product[0]?.averageRating))
                     .fill(null)
                     .map((star, i) => (
                       <svg
                         key={i}
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-4 h-4 text-green-500"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-4 h-4 text-green-500"
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -99,13 +59,13 @@ const ProductDetailsPage = () => {
                     ))}
 
                   <span className="text-gray-600 ml-3">
-                    {product?.averageRating} Stars ( Average )
+                    {product[0]?.averageRating} Stars ( Average )
                   </span>
                 </span>
               </div>
               <div className="flex mb-4">
                 <span className="flex items-center">
-                  {new Array(Math.floor(product?.individualRating))
+                  {new Array(Math.floor(product[0]?.individualRating))
                     .fill(null)
                     .map((star, i) => (
                       <svg
@@ -121,17 +81,17 @@ const ProductDetailsPage = () => {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
-                  {new Array(5 - Math.floor(product?.individualRating))
+                  {new Array(5 - Math.floor(product[0]?.individualRating))
                     .fill(null)
                     .map((star, i) => (
                       <svg
                         key={i}
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-4 h-4 text-green-500"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-4 h-4 text-green-500"
                         viewBox="0 0 24 24"
                       >
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -139,20 +99,20 @@ const ProductDetailsPage = () => {
                     ))}
 
                   <span className="text-gray-600 ml-3">
-                    {product?.individualRating} Stars ( Individual )
+                    {product[0]?.individualRating} Stars ( Individual )
                   </span>
                 </span>
               </div>
               <div className="mb-2">
-                {Object.keys(product?.keyFeatures)?.map((key) => (
-                  <li key={key}>{`${key} : ${product?.keyFeatures[key]}`}</li>
+                {Object.keys(product[0]?.keyFeatures)?.map((key) => (
+                  <li key={key}>{`${key} : ${product[0]?.keyFeatures[key]}`}</li>
                 ))}
               </div>
-              <p className="leading-relaxed">{product?.description}</p>
+              <p className="leading-relaxed">{product[0]?.description}</p>
 
               <div className="flex pt-3 mt-3 border-t-2 border-gray-100">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  ${product?.price}
+                  ${product[0]?.price}
                 </span>
 
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-auto">
@@ -173,7 +133,7 @@ const ProductDetailsPage = () => {
           {/* Reviews area  */}
           <div className="mt-10">
             <h1 className="text-3xl mb-5 font-semibold">Reviews</h1>
-            {product?.reviews?.map((review) => (
+            {product[0]?.reviews?.map((review) => (
               <div key={review?.id}>
                 <a className="inline-flex items-center my-2">
                   <img
@@ -202,6 +162,25 @@ const ProductDetailsPage = () => {
 
 export default ProductDetailsPage;
 
-// ProductDetailsPage.getLayout = function getLayout(page) {
-//   return <RootLayout>{page}</RootLayout>;
-// };
+export const getStaticPaths = async function () {
+  const res = await fetch("http://localhost:5000/products");
+  const products = await res.json();
+
+  const paths = products?.products?.map((product) => ({
+    params: { productId: product._id },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async function (context) {
+  const {params} = context;
+  const res = await fetch(`http://localhost:5000/products/${params?.productId}`);
+  const data = await res.json();
+  return {
+    props: { 
+      product: data,
+    },
+    revalidate: 30,
+  };
+};

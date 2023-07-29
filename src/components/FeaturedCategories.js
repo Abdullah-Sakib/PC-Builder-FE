@@ -43,6 +43,7 @@ const FeaturedCategories = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
+        <h1 className="text-3xl font-semibold mb-5">Categories</h1>
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
           {featuredCategories?.map((item) => (
             <Link
