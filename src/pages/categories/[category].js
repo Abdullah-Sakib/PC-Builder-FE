@@ -6,7 +6,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 
-const CategoriesPage = () => {
+const CategoriesPage = ({ product }) => {
+  console.log(product, "❎");
   const router = useRouter();
   console.log(router?.query?.category);
 
@@ -184,14 +185,14 @@ const CategoriesPage = () => {
     <>
       <Navbar />
       <div className="min-h-screen">
-        <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 text-black">
-          {featuredProducts?.map((product) => (
+        <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-black">
+          {product?.map((product) => (
             <Link
-              key={product?.id}
-              href={`/product/${product?.id}`}
+              key={product?._id}
+              href={`/product/${product?._id}`}
               className="mx-auto"
             >
-              <div className="card w-72 md:w-72 glass">
+              <div className="card w-72 md:w-96 glass">
                 <figure>
                   <img src={product?.image} alt="product" />
                 </figure>
@@ -229,6 +230,27 @@ const CategoriesPage = () => {
 
 export default CategoriesPage;
 
-// CategoriesPage.getLayout = function getLayout(page) {
-//   return <RootLayout>{page}</RootLayout>;
-// };
+export const getStaticPaths = async function () {
+  const res = await fetch("http://localhost:5000/products");
+  const products = await res.json();
+
+  const paths = products?.products?.map((product) => ({
+    params: { category: product.category },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async function (context) {
+  const { params } = context;
+  const res = await fetch(
+    `http://localhost:5000/category-products/${params?.category}`
+  );
+  const data = await res.json();
+  return {
+    props: {
+      product: data,
+    },
+    revalidate: 30,
+  };
+};

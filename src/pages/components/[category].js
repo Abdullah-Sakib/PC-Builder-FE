@@ -6,14 +6,13 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
 
-const ComponentsPage = () => {
+const ComponentsPage = ({ products }) => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  console.log(router?.query?.category);
+  const router = useRouter()
 
   const handleAddToBuilder = (product) => {
     dispatch(addComponent(product));
-    router.push("/pc-builder")
+    router.push("/pc-builder");
   };
 
   const featuredProducts = [
@@ -191,8 +190,8 @@ const ComponentsPage = () => {
       <Navbar />
       <div className="min-h-screen text-black">
         <div className="w-full sm:w-3/4 mx-auto">
-          {featuredProducts?.map((product) => (
-            <div key={product?.id} className="p-4   w-full">
+          {products?.map((product) => (
+            <div key={product?._id} className="p-4   w-full">
               <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
                 <div className="w-full h-40 sm:w-36 sm:h-36 sm:mr-4 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-500 flex-shrink-0">
                   <Image
@@ -213,9 +212,9 @@ const ComponentsPage = () => {
                   <div className="flex mb-1">
                     <span className="flex items-center">
                       <span className="text-gray-600 mr-3">
-                        {product?.rating} Stars
+                        {product?.averageRating} Stars
                       </span>
-                      {new Array(Math.floor(product?.rating))
+                      {new Array(Math.floor(product?.averageRating))
                         .fill(null)
                         .map((star, i) => (
                           <svg
@@ -231,7 +230,7 @@ const ComponentsPage = () => {
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                           </svg>
                         ))}
-                      {new Array(5 - Math.floor(product?.rating))
+                      {new Array(5 - Math.floor(product?.averageRating))
                         .fill(null)
                         .map((star, i) => (
                           <svg
@@ -271,3 +270,28 @@ const ComponentsPage = () => {
 };
 
 export default ComponentsPage;
+
+export const getStaticPaths = async function () {
+  const res = await fetch("http://localhost:5000/products");
+  const products = await res.json();
+
+  const paths = products?.products?.map((product) => ({
+    params: { category: product.category },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async function (context) {
+  const { params } = context;
+  const res = await fetch(
+    `http://localhost:5000/category-products/${params?.category}`
+  );
+  const data = await res.json();
+  return {
+    props: {
+      products: data,
+    },
+    revalidate: 30,
+  };
+};

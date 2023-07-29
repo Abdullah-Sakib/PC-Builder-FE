@@ -1,51 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React from "react";
 
-const FeaturedCategories = () => {
-  const featuredCategories = [
-    {
-      id: "101",
-      category: "CPU - Processor",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ACZibLrMtNmJ-jRJIJr_v6lCbt15ZdB8lQ&usqp=CAU",
-    },
-    {
-      id: "102",
-      category: "Motherboard",
-      image:
-        "https://history-computer.com/wp-content/uploads/2022/08/shutterstock_2056796405-1200x700.jpg",
-    },
-    {
-      id: "103",
-      category: "RAM",
-      image: "https://irnpost.com/wp-content/uploads/2022/04/0x0.jpg",
-    },
-    {
-      id: "104",
-      category: "Power Supply Unit",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZX_leOaalFd_hUtTPaumWAZKGYPu4KvrvOQ&usqp=CAU",
-    },
-    {
-      id: "105",
-      category: "Storage Device",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2KWQW1GBhX9lmayEO0UyIU_Yo83vyo6fmcw&usqp=CAU",
-    },
-    {
-      id: "106",
-      category: "Monitor",
-      image:
-        "https://eu.redmagic.gg/cdn/shop/files/banner_tablet_2x_11e02124-2881-48e0-8b88-12a11b1c09ca_x448@2x.jpg?v=1679985002",
-    },
-  ];
+const FeaturedCategories = ({ categories }) => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <h1 className="text-3xl font-semibold mb-5">Categories</h1>
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
-          {featuredCategories?.map((item) => (
+          {categories?.categories?.map((item) => (
             <Link
               href={`/categories/${item?.category}`}
               key={item?.id}

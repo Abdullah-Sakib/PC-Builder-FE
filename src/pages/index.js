@@ -4,7 +4,7 @@ import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
 import Link from "next/link";
 
-export default function Home({ products }) {
+export default function Home({ products, categories }) {
   let filteredProducts = [];
   products?.products?.map((product) => {
     if (filteredProducts?.length > 0) {
@@ -16,7 +16,6 @@ export default function Home({ products }) {
         filteredProducts.push(product);
       }
     } else {
-      console.log("entered else 👽");
       filteredProducts.push(product);
     }
   });
@@ -99,7 +98,7 @@ export default function Home({ products }) {
           </Link>
         ))}
       </div>
-      <FeaturedCategories />
+      <FeaturedCategories categories={categories}/>
       <Footer />
     </>
   );
@@ -108,10 +107,16 @@ export default function Home({ products }) {
 export const getStaticProps = async function () {
   const res = await fetch("http://localhost:5000/products");
   const data = await res.json();
+
+  const categoriesRes = await fetch("http://localhost:5000/categories");
+  const categories = await categoriesRes.json();
   return {
     props: {
       products: data,
+      categories: categories
     },
     revalidate: 30,
   };
 };
+
+
