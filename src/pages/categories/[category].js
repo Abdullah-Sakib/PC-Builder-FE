@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -17,12 +18,12 @@ const CategoriesPage = ({ product }) => {
               className="mx-auto"
             >
               <div className="card w-72 md:w-96 glass">
-                <figure>
-                  <img src={product?.image} alt="product" />
-                </figure>
+              <figure className="h-60 border-b-2">
+                <Image src={product?.image} className="h-full w-full image-full" height={700} width={700} alt="product" />
+              </figure>
                 <div className="card-body">
                   <h2 className="card-title">{product?.productName}</h2>
-                  <p className="flex">
+                  <div className="flex">
                     <span className="font-semibold mr-1">
                       Ratting: {product?.averageRating}
                     </span>{" "}
@@ -62,7 +63,7 @@ const CategoriesPage = ({ product }) => {
                           ))}
                       </span>
                     </div>
-                  </p>
+                  </div>
                   <p>
                     <span className="font-semibold">Category:</span>{" "}
                     {product?.category}

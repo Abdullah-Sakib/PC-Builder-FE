@@ -7,7 +7,8 @@ const nextConfig = {
       "encrypted-tbn0.gstatic.com",
       "history-computer.com",
       "irnpost.com",
-      "eu.redmagic.gg"
+      "eu.redmagic.gg",
+      "media.istockphoto.com"
     ],
   },
 };

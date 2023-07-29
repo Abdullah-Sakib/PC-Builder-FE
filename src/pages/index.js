@@ -2,8 +2,9 @@
 import FeaturedCategories from "@/components/FeaturedCategories";
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
+import Image from "next/image";
 import Link from "next/link";
-import { toast } from "react-hot-toast";
+import aorus from "../assets/aorus.jpg";
 
 export default function Home({ products, categories }) {
   let filteredProducts = [];
@@ -24,6 +25,15 @@ export default function Home({ products, categories }) {
   return (
     <>
       <Navbar />
+      <div className="w-full h-36 px-3 sm:px-0 sm:h-full container mx-auto my-5">
+        <Image
+          src={aorus}
+          height={1000}
+          width={1500}
+          className="w-full h-full rounded-md sm:rounded-lg"
+          alt=""
+        />
+      </div>
       <div className="container mx-auto bg-white py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 text-black">
         {filteredProducts?.map((product) => (
           <Link
@@ -32,8 +42,14 @@ export default function Home({ products, categories }) {
             className="mx-auto hover:shadow-lg duration-300 rounded-xl"
           >
             <div className="card w-72 md:w-72 glass">
-              <figure>
-                <img src={product?.image} alt="product" />
+              <figure className="h-48 border-b-2">
+                <Image
+                  src={product?.image}
+                  className="h-full w-full image-full"
+                  height={700}
+                  width={700}
+                  alt="product"
+                />
               </figure>
               <div className="card-body">
                 <h2 className="card-title text-lg">
