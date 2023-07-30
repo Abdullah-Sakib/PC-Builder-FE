@@ -104,7 +104,7 @@ export default ComponentsPage;
 export const getServerSideProps = async function (context) {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/category-products/${params?.category}`
+    `https://pc-builder-be.vercel.app/category-products/${params?.category}`
   );
   const data = await res.json();
   return {

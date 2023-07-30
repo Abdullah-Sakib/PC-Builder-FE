@@ -18,9 +18,15 @@ const CategoriesPage = ({ product }) => {
               className="mx-auto"
             >
               <div className="card w-72 md:w-96 glass">
-              <figure className="h-60 border-b-2">
-                <Image src={product?.image} className="h-full w-full image-full" height={700} width={700} alt="product" />
-              </figure>
+                <figure className="h-60 border-b-2">
+                  <Image
+                    src={product?.image}
+                    className="h-full w-full image-full"
+                    height={700}
+                    width={700}
+                    alt="product"
+                  />
+                </figure>
                 <div className="card-body">
                   <h2 className="card-title">{product?.productName}</h2>
                   <div className="flex">
@@ -90,7 +96,7 @@ const CategoriesPage = ({ product }) => {
 export default CategoriesPage;
 
 export const getStaticPaths = async function () {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("https://pc-builder-be.vercel.app/products");
   const products = await res.json();
 
   const paths = products?.products?.map((product) => ({
@@ -103,7 +109,7 @@ export const getStaticPaths = async function () {
 export const getStaticProps = async function (context) {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/category-products/${params?.category}`
+    `https://pc-builder-be.vercel.app/category-products/${params?.category}`
   );
   const data = await res.json();
   return {

@@ -122,10 +122,12 @@ export default function Home({ products, categories }) {
 }
 
 export const getStaticProps = async function () {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("https://pc-builder-be.vercel.app/products");
   const data = await res.json();
 
-  const categoriesRes = await fetch("http://localhost:5000/categories");
+  const categoriesRes = await fetch(
+    "https://pc-builder-be.vercel.app/categories"
+  );
   const categories = await categoriesRes.json();
   return {
     props: {
@@ -135,3 +137,5 @@ export const getStaticProps = async function () {
     revalidate: 30,
   };
 };
+
+// https://pc-builder-be.vercel.app/
