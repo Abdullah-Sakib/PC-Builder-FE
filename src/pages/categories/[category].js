@@ -96,10 +96,11 @@ const CategoriesPage = ({ product }) => {
 export default CategoriesPage;
 
 export const getStaticPaths = async function () {
-  const res = await fetch("https://pc-builder-be.vercel.app/products");
-  const products = await res.json();
+  const res = await fetch("https://pc-builder-backend-0oh1.onrender.com/products");
+  const AllProducts = await res.json();
 
-  const paths = products?.products?.map((product) => ({
+
+  const paths = AllProducts?.products?.map((product) => ({
     params: { category: product.category },
   }));
 
@@ -108,8 +109,9 @@ export const getStaticPaths = async function () {
 
 export const getStaticProps = async function (context) {
   const { params } = context;
+  const { category } = params;
   const res = await fetch(
-    `https://pc-builder-be.vercel.app/category-products/${params?.category}`
+    `https://pc-builder-backend-0oh1.onrender.com/category-products/${category}`
   );
   const data = await res.json();
   return {

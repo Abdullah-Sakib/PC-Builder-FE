@@ -122,11 +122,11 @@ export default function Home({ products, categories }) {
 }
 
 export const getStaticProps = async function () {
-  const res = await fetch("https://pc-builder-be.vercel.app/products");
+  const res = await fetch("https://pc-builder-backend-0oh1.onrender.com/products");
   const data = await res.json();
 
   const categoriesRes = await fetch(
-    "https://pc-builder-be.vercel.app/categories"
+    "https://pc-builder-backend-0oh1.onrender.com/categories"
   );
   const categories = await categoriesRes.json();
   return {
@@ -138,4 +138,4 @@ export const getStaticProps = async function () {
   };
 };
 
-// https://pc-builder-be.vercel.app/
+// https://pc-builder-backend-0oh1.onrender.com/

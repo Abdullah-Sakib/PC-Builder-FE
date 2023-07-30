@@ -10,7 +10,7 @@ const FeaturedCategories = ({ categories }) => {
           {categories?.categories?.map((item) => (
             <Link
               href={`/categories/${item?.category}`}
-              key={item?.id}
+              key={item?._id}
               className="p-4 w-1/2 md:w-1/5 lg:w-1/6 sm:mb-0 mb-6 hover:bg-gray-100 duration-300 rounded-lg cursor-pointer"
             >
               <div>

@@ -19,7 +19,7 @@ const Login = () => {
           <BsGoogle
             onClick={() =>
               signIn("google", {
-                callbackUrl: callbackUrl || "http://localhost:3000",
+                callbackUrl: callbackUrl || "https://pc-builder-fe-abdullah-sakib.vercel.app",
               })
             }
             className="text-3xl cursor-pointer"
@@ -27,7 +27,7 @@ const Login = () => {
           <BsGithub
             onClick={() =>
               signIn("github", {
-                callbackUrl: callbackUrl || "http://localhost:3000",
+                callbackUrl: callbackUrl || "https://pc-builder-fe-abdullah-sakib.vercel.app",
               })
             }
             className="text-3xl cursor-pointer"

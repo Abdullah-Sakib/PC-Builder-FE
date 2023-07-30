@@ -4,8 +4,8 @@ import Navbar from "@/components/Shared/Navbar";
 import Image from "next/image";
 import React from "react";
 
-const ProductDetailsPage = ({product}) => {
-  
+const ProductDetailsPage = ({ product = [] }) => {
+  // console.log(product)
   return (
     <>
       <Navbar />
@@ -15,20 +15,20 @@ const ProductDetailsPage = ({product}) => {
             <Image
               alt="ecommerce"
               className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src={product[0]?.image}
+              src={product?.image}
               height={1000}
               width={1000}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                {product[0]?.category}
+                {product?.category}
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {product[0]?.productName}
+                {product?.productName}
               </h1>
               <div className="flex mb-1">
                 <span className="flex items-center">
-                  {new Array(Math.floor(product[0]?.averageRating))
+                  {new Array(Math.floor(product?.averageRating || 0))
                     .fill(null)
                     .map((star, i) => (
                       <svg
@@ -44,7 +44,7 @@ const ProductDetailsPage = ({product}) => {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
-                  {new Array(5 - Math.floor(product[0]?.averageRating))
+                  {new Array(5 - Math.floor(product?.averageRating || 0))
                     .fill(null)
                     .map((star, i) => (
                       <svg
@@ -62,13 +62,13 @@ const ProductDetailsPage = ({product}) => {
                     ))}
 
                   <span className="text-gray-600 ml-3">
-                    {product[0]?.averageRating} Stars ( Average )
+                    {product?.averageRating} Stars ( Average )
                   </span>
                 </span>
               </div>
               <div className="flex mb-4">
                 <span className="flex items-center">
-                  {new Array(Math.floor(product[0]?.individualRating))
+                  {new Array(Math.floor(product?.individualRating || 0))
                     .fill(null)
                     .map((star, i) => (
                       <svg
@@ -84,7 +84,7 @@ const ProductDetailsPage = ({product}) => {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
-                  {new Array(5 - Math.floor(product[0]?.individualRating))
+                  {new Array(5 - Math.floor(product?.individualRating || 0))
                     .fill(null)
                     .map((star, i) => (
                       <svg
@@ -102,20 +102,22 @@ const ProductDetailsPage = ({product}) => {
                     ))}
 
                   <span className="text-gray-600 ml-3">
-                    {product[0]?.individualRating} Stars ( Individual )
+                    {product?.individualRating} Stars ( Individual )
                   </span>
                 </span>
               </div>
               <div className="mb-2">
-                {Object.keys(product[0]?.keyFeatures)?.map((key) => (
-                  <li key={key}>{`${key} : ${product[0]?.keyFeatures[key]}`}</li>
+                {Object.keys(product?.keyFeatures || [])?.map((key) => (
+                  <li
+                    key={key}
+                  >{`${key} : ${product?.keyFeatures[key]}`}</li>
                 ))}
               </div>
-              <p className="leading-relaxed">{product[0]?.description}</p>
+              <p className="leading-relaxed">{product?.description}</p>
 
               <div className="flex pt-3 mt-3 border-t-2 border-gray-100">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  ${product[0]?.price}
+                  ${product?.price}
                 </span>
 
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-auto">
@@ -136,8 +138,8 @@ const ProductDetailsPage = ({product}) => {
           {/* Reviews area  */}
           <div className="mt-10">
             <h1 className="text-3xl mb-5 font-semibold">Reviews</h1>
-            {product[0]?.reviews?.map((review) => (
-              <div key={review?.id}>
+            {product?.reviews?.map((review, i) => (
+              <div key={i}>
                 <a className="inline-flex items-center my-2">
                   <img
                     alt="testimonial"
@@ -166,23 +168,27 @@ const ProductDetailsPage = ({product}) => {
 export default ProductDetailsPage;
 
 export const getStaticPaths = async function () {
-  const res = await fetch("https://pc-builder-be.vercel.app/products");
-  const products = await res.json();
+  const res = await fetch(
+    "https://pc-builder-backend-0oh1.onrender.com/products"
+  );
+  const AllProducts = await res.json();
 
-  const paths = products?.products?.map((product) => ({
+  const paths = AllProducts?.products?.map((product) => ({
     params: { productId: product._id },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps = async function (context) {
-  const {params} = context;
-  const res = await fetch(`https://pc-builder-be.vercel.app/products/${params?.productId}`);
+  const { params } = context;
+  const res = await fetch(
+    `https://pc-builder-backend-0oh1.onrender.com/products/${params?.productId}`
+  );
   const data = await res.json();
   return {
-    props: { 
-      product: data,
+    props: {
+      product: data[0],
     },
     revalidate: 30,
   };
